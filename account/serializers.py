@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from account.models import User,UserProfile
+from account.models import *
 from django.core.exceptions import ValidationError
 from xml.dom import ValidationErr
 from django.utils.encoding import smart_str , force_bytes,DjangoUnicodeDecodeError
@@ -105,7 +105,27 @@ class UserProfileImageSerializer(serializers.ModelSerializer):
         model = UserProfile
         fields = ['image']
 
+class UserSkillSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserSkill
+        fields = '__all__'
 
+class UserExperinceSerializer(serializers.ModelSerializer):
+    class Meta :
+        model = UserExperince
+        fields = '__all__'
+    
+class UserPersonalInfoSerializer(serializers.ModelSerializer):
+    class Meta :
+        model = UserPersonalInfo
+        fields = '__all__'
+
+class UserEducationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserEducation
+        fields = '__all__'
+
+        
 
 
 
