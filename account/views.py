@@ -86,9 +86,80 @@ class UserProfileUpdate(APIView):
             return Response({'msg':'updated'})
         return Response({'msg':'error'})   
     
-# class UserskillView(APIView):
-#     def put(self,request,pk):
-        
+class UserskillView(APIView):
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+    def post(self,request,pk = None):
+        serializer = UserSkillSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response({'msg':'Data Inserted'},status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+    def put(self,request,pk):
+        puser = UserSkill.objects.filter(pk=pk).first()
+        serializer = UserPersonalInfoSerializer(puser,data=request.data)
+        if serializer.is_valid(raise_exception=True) :
+            serializer.save()
+            return Response({'msg':'info updated'},status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+class UserExperinceView(APIView):
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+
+    def post(self,request,pk = None):
+        serializer = UserExperinceSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response({'msg':'user exp created'},status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    def put(self,request,pk):
+        euser = UserExperince.objects.filter(pk=pk).first()
+        serializer= UserExperinceSerializer(euser,data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response({'msg':'updated'},status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+class UserEducationView(APIView):
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+    def post(self,request,pk = None):
+        serializer = UserEducationSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response({'msg': 'user education created'},status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+    def put(self,request,pk):
+        euser = UserEducation.objects.filter(pk=pk).first()
+        serializer = UserEducationSerializer(euser,data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response({'msg':'updated'},status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserPersInfo(APIView):
+    renderer_classes = [UserRenderer]
+    permission_classes = [IsAuthenticated]
+    def post(self,request,pk=None):
+        serializer = UserPersonalInfoSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response({'msg':'created'},status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+    def put(self,request,pk):
+        puser = UserPersonalInfo.objects.filter(pk=pk).first()
+        serializer = UserPersonalInfoSerializer(puser,data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response({'msg':'created'},status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+
 
 
 
