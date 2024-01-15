@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User,UserProfile,UserEducation,UserSkill
+from .models import User,UserProfile,UserEducation,UserSkill,UserPersonalInfo,UserExperince
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 
@@ -41,3 +41,6 @@ class UserSkillAdmin(admin.ModelAdmin):
 admin.site.register(User, UserModelAdmin)
 admin.site.register(UserProfile)
 admin.site.register(UserEducation)
+admin.site.register(UserPersonalInfo)
+admin.site.register(UserExperince)
+# admin.site.register(UserSkill)
