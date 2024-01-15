@@ -34,7 +34,7 @@ EXTERNAL_APP = [
     'rest_framework',
     'rest_framework_simplejwt',
     "corsheaders",
-    'account.apps.AccountConfig'
+    'account.apps.AccountConfig',
     
 ]
 
