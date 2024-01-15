@@ -10,5 +10,13 @@ urlpatterns = [
     # path('reset-password/<uid>/<token>',UserPasswordResetView.as_view(),name='reset-password'),
     path("reset-password/<uid>/<token>", UserPasswordResetView.as_view(), name="resetpassword"),
     path('updateProfile/<int:pk>',UserProfileUpdate.as_view()),
-    # path('')
+    path('userskil/',UserskillView.as_view()),
+    path('userskil-update/<int:pk>',UserskillView.as_view()),
+    path('user-exprince/',UserExperinceView.as_view()),
+    path('user-exprince-update/<int:pk>',UserExperinceView.as_view()),
+    path('user-education/',UserEducationView.as_view()),
+    path('user-education-update/<int:pk>',UserEducationView.as_view()),
+    path('user-personal-info/',UserPersInfo.as_view()),
+    path('user-personal-info-update/<int:pk>',UserPersInfo.as_view()),
+
 ] 
