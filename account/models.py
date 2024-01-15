@@ -95,6 +95,7 @@ class UserEducation(models.Model):
     def __str__(self) -> str:
         return self.user.name + ' ' + self.institute
     
+
 class UserSkill(models.Model):
     user = models.ManyToManyField(User)
     skill = models.CharField(max_length=5000)
@@ -102,7 +103,24 @@ class UserSkill(models.Model):
     def user_email(self):
         return ','.join([str(p) for p in self.user.all()])
     
-# class UserProject(models.Model)
+class UserExperince(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    comp_name = models.CharField(max_length=100)
+    job_role = models.CharField(max_length=200)
+    exprince = models.IntegerField()
+    do_join = models.DateField()
+    do_resign = models.DateField()
+
+class UserPersonalInfo(models.Model):
+    user = models.OneToOneField(User,on_delete = models.CASCADE)
+    fname = models.CharField(max_length=100)
+    lname = models.CharField(max_length=100)
+    gender = models.CharField(max_length=1)
+    dob = models.DateField()
+    address = models.TextField()
+
+    def __str__(self):
+        return self.fname
 
 
 
